@@ -17,20 +17,34 @@ export default function App() {
               <p>Note : {movie.rating}</p>
             </li>
           ))}
-          <h2>Coups de coeur</h2>
-          <ul>
-            {moviesList
-              .filter((movie) => movie.rating >= 8)
-              .map((movie) => (
-                <li key={movie.id}>
-                  <h3>{movie.title}</h3>
-                  <p>
-                    {movie.year} — {movie.director}
-                  </p>
-                  <p>Note : {movie.rating}</p>
-                </li>
-              ))}
-          </ul>
+        </ul>
+        <h2>Coups de coeur</h2>
+        <ul>
+          {moviesList
+            .filter((movie) => movie.rating >= 8)
+            .map((movie) => (
+              <li key={movie.id}>
+                <h3>{movie.title}</h3>
+                <p>
+                  {movie.year} — {movie.director}
+                </p>
+                <p>Note : {movie.rating}</p>
+              </li>
+            ))}
+        </ul>
+        <h2>Films de super-héros</h2>
+        <ul>
+          {moviesList
+            .filter((movie) => movie.categorie == 'Super-héros')
+            .map((movie) => (
+              <li key={movie.id}>
+                <h3>{movie.title}</h3>
+                <p>
+                  {movie.year} — {movie.director}
+                </p>
+                <p>Note : {movie.rating}</p>
+              </li>
+            ))}
         </ul>
       </main>
     </>
