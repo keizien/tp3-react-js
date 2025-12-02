@@ -1,20 +1,24 @@
 import moviesList from './data/moviesList.js';
+import MovieList from './components/MoviesList.jsx';
 
 export default function App() {
   return (
     <>
       <nav className="bg-gray-900 text-white py-4">
         <div className="flex justify-between">
-          <h1 className="text-xl font-bold cursor-pointer">CinéTech</h1>
+          <h1 className="hover:text-red-400 text-xl font-bold cursor-pointer">
+            CinéTech
+          </h1>
           <ul className="flex gap-6">
-            <li className="cursor-pointer">Accueil</li>
-            <li className="cursor-pointer">Films</li>
-            <li className="cursor-pointer">Catégories</li>
-            <li className="cursor-pointer">Contact</li>
+            <li className="hover:text-red-400 cursor-pointer">Accueil</li>
+            <li className="hover:text-red-400 cursor-pointer">Films</li>
+            <li className="hover:text-red-400 cursor-pointer">Catégories</li>
+            <li className="hover:text-red-400 cursor-pointer">Contact</li>
           </ul>
         </div>
       </nav>
       <main className="max-w-7xl mx-auto mt-6">
+        <MovieList movies={moviesList} />
         <h2 className="text-2xl font-bold mb-4">Films à l'affiche</h2>
         <ul className="grid grid-cols-1 sm:grid-cols-5 gap-6">
           {moviesList.map((movie) => (
@@ -70,23 +74,29 @@ export default function App() {
               </li>
             ))}
         </ul>
-        <h2 className="text-2xl font-bold mb-4">Films du moment</h2>
-        <ul className="grid grid-cols-1 sm:grid-cols-5 gap-6">
+        <h2 className="text-2xl font-bold mb-4">Film du moment</h2>
+        <ul className="grid grid-cols-1 gap-6">
           {moviesList
-            .filter((movie) => movie.cinema == 'Film du moment')
+            .filter((movie) => movie.cinema === 'Film du moment')
             .map((movie) => (
               <li key={movie.id} className="bg-gray-100 rounded-xl p-4 shadow">
-                <img
-                  src={movie.poster}
-                  alt={movie.title}
-                  className="w-full h-96 object-cover rounded"
-                />
-                <h3 className="text-3xl font-semibold mt-2">{movie.title}</h3>
-                <p className="text-sm text-gray-600 mt-2">
-                  {movie.year} — {movie.director}
-                </p>
-                <p className="mt-2 text-red-500">Note : {movie.rating}</p>
-                <p className="mt-2">{movie.synopsis}</p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <img
+                    src={movie.poster}
+                    alt={movie.title}
+                    className="w-full sm:w-1/4 h-auto object-cover rounded"
+                  />
+                  <div className="flex flex-col">
+                    <h3 className="text-3xl font-semibold mt-2">
+                      {movie.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 mt-2">
+                      {movie.year} — {movie.director}
+                    </p>
+                    <p className="mt-2 text-red-500">Note : {movie.rating}</p>
+                    <p className="mt-2">{movie.synopsis}</p>
+                  </div>
+                </div>
               </li>
             ))}
         </ul>
@@ -98,9 +108,11 @@ export default function App() {
             ©2025 CinéTech — Tous droits réservés.
           </p>
           <ul className="flex justify-center gap-6 mt-4 text-gray-300">
-            <li className="cursor-pointer">Mentions légales</li>
-            <li className="cursor-pointer">Contact</li>
-            <li className="cursor-pointer">À propos</li>
+            <li className="hover:text-red-400 cursor-pointer">
+              Mentions légales
+            </li>
+            <li className="hover:text-red-400 cursor-pointer">Contact</li>
+            <li className="hover:text-red-400 cursor-pointer">À propos</li>
           </ul>
         </div>
       </footer>
