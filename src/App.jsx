@@ -4,9 +4,9 @@ export default function App() {
   console.log(moviesList);
   return (
     <>
-      <h1>CinéTech</h1>
+      <h1 style={{ color: 'red', background: 'yellow' }}>CinéTech</h1>
       <main>
-        <h2>Films à l'affiche</h2>
+        <h2 style={{ fontSize: '20px' }}>Films à l'affiche</h2>
         <ul>
           {moviesList.map((movie) => (
             <li key={movie.id}>
@@ -18,7 +18,7 @@ export default function App() {
             </li>
           ))}
         </ul>
-        <h2>Coups de coeur</h2>
+        <h2 style={{ fontSize: '20px' }}>Coups de coeur</h2>
         <ul>
           {moviesList
             .filter((movie) => movie.rating >= 8)
@@ -32,7 +32,7 @@ export default function App() {
               </li>
             ))}
         </ul>
-        <h2>Films de super-héros</h2>
+        <h2 style={{ fontSize: '20px' }}>Films de super-héros</h2>
         <ul>
           {moviesList
             .filter((movie) => movie.categorie == 'Super-héros')
