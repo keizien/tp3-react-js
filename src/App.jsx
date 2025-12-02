@@ -1,11 +1,11 @@
 import moviesList from './data/moviesList.js';
-import './style.css';
+import styles from './App.module.css';
 
 export default function App() {
   console.log(moviesList);
   return (
     <>
-      <h1 className="title">CinéTech</h1>
+      <h1 className={styles.title}>CinéTech</h1>
       <main>
         <h2>Films à l'affiche</h2>
         <ul>
