@@ -10,6 +10,7 @@ const moviesList = [
     synopsis:
       "Paul Atreides s'unit à Chani et aux Fremen tout en préparant sa vengeance contre ceux qui ont détruit sa famille.",
     categorie: 'Science fiction',
+    cinema: 'Film du moment',
   },
   {
     id: 2,
@@ -46,6 +47,7 @@ const moviesList = [
     synopsis:
       "L'identité de Spider-Man est révélée, entraînant le chaos et des menaces d'autres univers.",
     categorie: 'Super-héros',
+    cinema: 'Film du moment',
   },
   {
     id: 5,
@@ -70,6 +72,7 @@ const moviesList = [
     synopsis:
       'Les Avengers restants tentent de défaire les actions de Thanos après le claquement de doigts dévastateur.',
     categorie: 'Super-héros',
+    cinema: 'Film du moment',
   },
   {
     id: 7,
@@ -94,6 +97,7 @@ const moviesList = [
     synopsis:
       "Les aventures de Sonic continuent avec l'arrivée d'un nouveau rival de taille.",
     categorie: 'Super-héros',
+    cinema: 'Film du moment',
   },
   {
     id: 9,
