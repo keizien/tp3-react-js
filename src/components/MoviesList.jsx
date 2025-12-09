@@ -1,4 +1,4 @@
-export default function MovieList({ movies }) {
+export default function MoviesList({ movies }) {
   return (
     <section>
       <h2 className="text-2xl font-bold mb-4">Films à l'affiche</h2>

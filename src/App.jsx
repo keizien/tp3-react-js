@@ -1,5 +1,6 @@
 import moviesList from './data/moviesList.js';
-import MovieList from './components/MoviesList.jsx';
+import MoviesList from './components/MoviesList.jsx';
+import MovieCard from './components/MovieCard.jsx';
 
 export default function App() {
   return (
@@ -18,62 +19,6 @@ export default function App() {
         </div>
       </nav>
       <main className="max-w-7xl mx-auto mt-6">
-        <MovieList movies={moviesList} />
-        <h2 className="text-2xl font-bold mb-4">Films à l'affiche</h2>
-        <ul className="grid grid-cols-1 sm:grid-cols-5 gap-6">
-          {moviesList.map((movie) => (
-            <li key={movie.id} className="bg-gray-100 rounded-xl p-4 shadow">
-              <h3 className="text-xl font-semibold mt-2">{movie.title}</h3>
-              <p className="text-sm text-gray-600 mt-2">
-                {movie.year} — {movie.director}
-              </p>
-              <p className="mt-2">Note : {movie.rating}</p>
-              <img
-                src={movie.poster}
-                alt={movie.title}
-                className="w-full h-64 object-cover rounded mt-2"
-              />
-            </li>
-          ))}
-        </ul>
-        <h2 className="text-2xl font-bold mb-4">Coups de coeur</h2>
-        <ul className="grid grid-cols-1 sm:grid-cols-5 gap-6">
-          {moviesList
-            .filter((movie) => movie.rating >= 8)
-            .map((movie) => (
-              <li key={movie.id} className="bg-gray-100 rounded-xl p-4 shadow">
-                <h3 className="text-xl font-semibold mt-2">{movie.title}</h3>
-                <p className="text-sm text-gray-600 mt-2">
-                  {movie.year} — {movie.director}
-                </p>
-                <p className="mt-2">Note : {movie.rating}</p>
-                <img
-                  src={movie.poster}
-                  alt={movie.title}
-                  className="w-full h-64 object-cover rounded mt-2"
-                />
-              </li>
-            ))}
-        </ul>
-        <h2 className="text-2xl font-bold mb-4">Films de super-héros</h2>
-        <ul className="grid grid-cols-1 sm:grid-cols-5 gap-6">
-          {moviesList
-            .filter((movie) => movie.categorie == 'Super-héros')
-            .map((movie) => (
-              <li key={movie.id} className="bg-gray-100 rounded-xl p-4 shadow">
-                <h3 className="text-xl font-semibold mt-2">{movie.title}</h3>
-                <p className="text-sm text-gray-600 mt-2">
-                  {movie.year} — {movie.director}
-                </p>
-                <p className="mt-2">Note : {movie.rating}</p>
-                <img
-                  src={movie.poster}
-                  alt={movie.title}
-                  className="w-full h-64 object-cover rounded mt-2"
-                />
-              </li>
-            ))}
-        </ul>
         <h2 className="text-2xl font-bold mb-4">Film du moment</h2>
         <ul className="grid grid-cols-1 gap-6">
           {moviesList
@@ -98,6 +43,23 @@ export default function App() {
                   </div>
                 </div>
               </li>
+            ))}
+        </ul>
+        <MoviesList movies={moviesList} />
+        <h2 className="text-2xl font-bold mb-4">Coups de coeur</h2>
+        <ul className="grid grid-cols-1 sm:grid-cols-5 gap-6">
+          {moviesList
+            .filter((movie) => movie.rating >= 8)
+            .map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
+        </ul>
+        <h2 className="text-2xl font-bold mb-4">Films de super-héros</h2>
+        <ul className="grid grid-cols-1 sm:grid-cols-5 gap-6">
+          {moviesList
+            .filter((movie) => movie.categorie === 'Super-héros')
+            .map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
             ))}
         </ul>
       </main>
