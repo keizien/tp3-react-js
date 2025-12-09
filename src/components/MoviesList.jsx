@@ -3,6 +3,7 @@ import MovieCard from './MovieCard';
 import { useState } from 'react';
 
 export default function MoviesList({ movies, title }) {
+  const originalList = movies;
   const [sortedMovies, setMovies] = useState(movies);
   const [moviesAsc, setMoviesAsc] = useState(true);
 
@@ -10,10 +11,14 @@ export default function MoviesList({ movies, title }) {
     const sorted = [...movies].sort((a, b) =>
       moviesAsc ? a.year - b.year : b.year - a.year
     );
-
     setMovies(sorted);
     setMoviesAsc(!moviesAsc);
   };
+
+  const resetList = () => {
+    setMovies(originalList);
+  };
+
   const filteredMovies = sortedMovies;
   return (
     <Section title={title}>
@@ -23,6 +28,12 @@ export default function MoviesList({ movies, title }) {
           onClick={sortMoviesByDate}
         >
           Tri par année
+        </button>
+        <button
+          className="ml-auto bg-red-500 hover:bg-red-700 text-white font-bold px-2 py-1 rounded"
+          onClick={resetList}
+        >
+          Remettre la liste original
         </button>
       </div>
       <ul className="grid grid-cols-1 sm:grid-cols-5 gap-6 mt-4">
