@@ -1,6 +1,8 @@
 import Section from './Section';
 import MovieCard from './MovieCard';
 import { useState } from 'react';
+import { FaArrowUpWideShort } from 'react-icons/fa6';
+import { FaArrowDownWideShort } from 'react-icons/fa6';
 
 export default function MoviesList({ movies, title }) {
   const originalList = movies;
@@ -19,15 +21,20 @@ export default function MoviesList({ movies, title }) {
     setMovies(originalList);
   };
 
+  const IconMoviesByDate = moviesAsc
+    ? FaArrowDownWideShort
+    : FaArrowUpWideShort;
+
   const filteredMovies = sortedMovies;
   return (
     <Section title={title}>
       <div className="flex bg-gray-100 rounded-xl p-4 shadow sm:p-6 border borderwhite/10">
         <button
-          className="ml-auto bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 py-1 rounded"
+          className="ml-auto flex items-center gap-1 bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 py-1 rounded"
           onClick={sortMoviesByDate}
         >
           Tri par année
+          <IconMoviesByDate />
         </button>
         <button
           className="ml-auto bg-red-500 hover:bg-red-700 text-white font-bold px-2 py-1 rounded"
