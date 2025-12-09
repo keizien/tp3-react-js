@@ -1,6 +1,6 @@
 import moviesList from './data/moviesList.js';
 import MoviesList from './components/MoviesList.jsx';
-import Counter from './components/Counter.jsx';
+import MovieCard from './components/MovieCard.jsx';
 
 export default function App() {
   return (
@@ -46,22 +46,22 @@ export default function App() {
             ))}
         </ul>
         <MoviesList movies={moviesList} title="Films à l'affiche" />{' '}
-        <MoviesList
-          movies={moviesList}
-          title="Coups de cœur"
-          filterFn={(movie) => movie.rating >= 8}
-        />
-        <MoviesList
-          movies={moviesList}
-          title="Films de super-héros"
-          filterFn={(movie) => movie.categorie === 'Super-héros'}
-        />
-      </main>
-      <main className="max-w-7xl mx-auto mt-6">
-        {/* ton code existant */}
-
-        <h2 className="text-2xl font-bold mb-4 mt-12">Test des Hooks</h2>
-        <Counter />
+        <h2 className="text-2xl font-bold mb-4">Coups de cœur</h2>
+        <ul className="grid grid-cols-1 sm:grid-cols-5 gap-6">
+          {moviesList
+            .filter((movie) => movie.rating >= 8)
+            .map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
+        </ul>
+        <h2 className="text-2xl font-bold mb-4">Films de super-héros</h2>
+        <ul className="grid grid-cols-1 sm:grid-cols-5 gap-6">
+          {moviesList
+            .filter((movie) => movie.categorie === 'Super-héros')
+            .map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
+        </ul>
       </main>
       <footer className="bg-gray-900 text-white py-8 mt-12">
         <div className="px-4 text-center">
