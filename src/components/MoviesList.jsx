@@ -3,6 +3,7 @@ import MovieCard from './MovieCard';
 import { useState } from 'react';
 import { FaArrowUpWideShort } from 'react-icons/fa6';
 import { FaArrowDownWideShort } from 'react-icons/fa6';
+import { FaAlignJustify } from 'react-icons/fa6';
 
 export default function MoviesList({ movies, title }) {
   const originalList = movies;
@@ -14,6 +15,21 @@ export default function MoviesList({ movies, title }) {
       moviesAsc ? a.year - b.year : b.year - a.year
     );
     setMovies(sorted);
+    setMoviesAsc(!moviesAsc);
+  };
+
+  const sortMovieByTitle = () => {
+    const sortedbytitle = [...movies].sort((a, b) =>
+      a.title.localeCompare(b.title)
+    );
+    setMovies(sortedbytitle);
+  };
+
+  const sortMoviesByNote = () => {
+    const sortedbynote = [...movies].sort((a, b) =>
+      moviesAsc ? a.rating - b.rating : b.rating - a.rating
+    );
+    setMovies(sortedbynote);
     setMoviesAsc(!moviesAsc);
   };
 
@@ -40,7 +56,20 @@ export default function MoviesList({ movies, title }) {
           className="ml-auto bg-red-500 hover:bg-red-700 text-white font-bold px-2 py-1 rounded"
           onClick={resetList}
         >
-          Remettre la liste original
+          Remettre la liste originale
+          <FaAlignJustify />
+        </button>
+        <button
+          className="ml-auto bg-purple-500 hover:bg-purple-700 text-white font-bold px-2 py-1 rounded"
+          onClick={sortMovieByTitle}
+        >
+          Tri par ordre alphabétique
+        </button>
+        <button
+          className="ml-auto bg-pink-500 hover:bg-pink-700 text-white font-bold px-2 py-1 rounded"
+          onClick={sortMoviesByNote}
+        >
+          Tri par note
         </button>
       </div>
       <ul className="grid grid-cols-1 sm:grid-cols-5 gap-6 mt-4">
