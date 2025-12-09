@@ -1,6 +1,6 @@
 import moviesList from './data/moviesList.js';
 import MoviesList from './components/MoviesList.jsx';
-import MovieCard from './components/MovieCard.jsx';
+import Counter from './components/Counter.jsx';
 
 export default function App() {
   return (
@@ -56,6 +56,12 @@ export default function App() {
           title="Films de super-héros"
           filterFn={(movie) => movie.categorie === 'Super-héros'}
         />
+      </main>
+      <main className="max-w-7xl mx-auto mt-6">
+        {/* ton code existant */}
+
+        <h2 className="text-2xl font-bold mb-4 mt-12">Test des Hooks</h2>
+        <Counter />
       </main>
       <footer className="bg-gray-900 text-white py-8 mt-12">
         <div className="px-4 text-center">
